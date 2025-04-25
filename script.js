@@ -16,4 +16,17 @@ const getHumanChoice = () => {
   return userInput.toLowerCase();
 };
 
+// Using terminal prompt may not work but we can use readline
+const readline = require("readline").createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+const getHumanChoice_terminal = (callback) => {
+  // Using readline to get user input
+  readline.question("Enter rock, paper, or scissors: ", (input) => {
+    callback(input.toLowerCase());
+    readline.close();
+  });
+};
 
+getHumanChoice_terminal((choice) => console.log(`You chose: ${choice}`));
